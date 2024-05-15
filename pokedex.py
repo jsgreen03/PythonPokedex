@@ -11,11 +11,29 @@ def main():
 	gen = args[1]
 	if gen == '9':
 		initialize9()
+	act = welcome()
+	result = interpretInitialAct(act,gen)
+
+
+
 
 def initialize9():
-	mon_links = pd.read_csv("mon_links.csv",index_col="Names")
+	mon_links = pd.read_csv("mon_links_9.csv",index_col="Names")
 
+def welcome():
+	return input("What would you like to do?\n[p] - Pokemon Search \t [q] - Quit\n")
 
+def getMon(gen):
+	return input("Generation: {}\nEnter a Pokemon: ".format(gen))
+
+def interpretInitialAct(act,gen):
+	if act in "Pp":
+		return getMon(gen)
+	if act in "Qq":
+		return 0
+	else: 
+		new_act= input("Invalid Input. Please enter a valid character based on options presented.\n")
+		interpretAct(new_act,gen)
 
 
 
